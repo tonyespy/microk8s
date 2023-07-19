@@ -607,6 +607,16 @@ plugs:
   k8s-journald:
     interface: kubernetes-support
     flavor: autobind-unix
+  load-rmb:
+    interface: kernel-module-load
+    load: on-boot
+    modules:
+      - name: rmb
+  load-nvme-tcp:
+    interface: kernel-module-load
+    load: on-boot
+    modules:
+      - name: nvme-tcp
   dot-kube:
     interface: personal-files
     write:
