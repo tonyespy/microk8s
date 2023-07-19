@@ -273,6 +273,10 @@ parts:
       - -usr/share/doc
       - -usr/share/man
 
+  autocluster:
+    plugin: dump
+    source: bin
+
 apps:
   microk8s:
     command: microk8s.wrapper
@@ -562,6 +566,11 @@ apps:
       - kubernetes-support
   version:
     command: microk8s-version.wrapper
+  cluster-agent:
+    command: autocluster.sh
+    daemon: simple
+    plugs:
+      - avahi-services
 
 passthrough:
   system-usernames:
@@ -629,6 +638,10 @@ plugs:
     interface: content
     content: configuration
     target: $SNAP/etc/launcher
+  avahi-services:
+    interface: content
+    content: avahi-services
+    target: $SNAP_COMMON/etc/avahi/services
 
 slots:
   microk8s:

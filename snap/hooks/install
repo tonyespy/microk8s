@@ -139,3 +139,5 @@ then
 fi
 
 touch "${SNAP_DATA}/var/lock/installed.lock"
+
+mkdir -p "$SNAP_COMMON/etc/avahi/services/"
